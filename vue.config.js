@@ -17,9 +17,20 @@ module.exports = {
   // 根据你的实际情况更改这里
   publicPath,
   lintOnSave: true,
-  devServer: {
-    publicPath // 和 publicPath 保持一致
-  },
+   devServer: {
+     publicPath, // 和 publicPath 保持一致
+        proxy: {
+          '/api': {
+            target: 'http://127.0.0.1',
+            ws: true,
+            changeOrigin: true,
+            pathRewrite: {
+              '^/api': '/api'
+            }
+          }
+        },
+        port: 8789,
+   },
   css: {
     loaderOptions: {
       // 设置 scss 公用变量文件
@@ -28,6 +39,18 @@ module.exports = {
       }
     }
   },
+  // devServer: {
+  //   proxy: {
+  //     '/api': {
+  //       target: 'localhost:3000',
+  //       ws: true,
+  //       changeOrigin: true,
+  //       pathRewrite: {
+  //         '^/api': ''
+  //       }
+  //     }
+  //   }
+  // },
   // 默认设置: https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-service/lib/config/base.js
   chainWebpack: config => {
     /**

@@ -8,8 +8,8 @@ const _import = require('@/libs/util.import.' + process.env.NODE_ENV)
  */
 const frameIn = [
   {
-    path: '/',
-    redirect: { name: 'index' },
+    path: '/admin',
+    redirect: { name: 'login' },
     component: layoutHeaderAside,
     children: [
       // 首页
@@ -90,6 +90,17 @@ const frameOut = [
 ]
 
 /**
+ * 博客首页
+ */
+const blog = [
+  {
+    path: '/',
+    name: 'index',
+    component: _import('blog/index')
+  }
+]
+
+/**
  * 错误页面
  */
 const errorPage = [
@@ -107,5 +118,6 @@ export const frameInRoutes = frameIn
 export default [
   ...frameIn,
   ...frameOut,
-  ...errorPage
+  ...errorPage,
+  ...blog
 ]
