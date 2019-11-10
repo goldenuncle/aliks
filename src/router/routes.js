@@ -9,46 +9,47 @@ const _import = require('@/libs/util.import.' + process.env.NODE_ENV)
 const frameIn = [
   {
     path: '/admin',
-    redirect: { name: 'login' },
+    redirect: { name: 'admin/index' },
     component: layoutHeaderAside,
     children: [
       // 首页
       {
         path: 'index',
-        name: 'index',
+        name: 'admin/index',
         meta: {
+          title: '首页',
           auth: true
         },
         component: _import('system/index')
       },
       // 演示页面
       {
-        path: 'page1',
-        name: 'page1',
+        path: 'article',
+        name: 'article',
         meta: {
-          title: '页面 1',
+          title: '文章管理',
           auth: true
         },
-        component: _import('demo/page1')
+        component: _import('admin/article')
       },
-      {
-        path: 'page2',
-        name: 'page2',
-        meta: {
-          title: '页面 2',
-          auth: true
-        },
-        component: _import('demo/page2')
-      },
-      {
-        path: 'page3',
-        name: 'page3',
-        meta: {
-          title: '页面 3',
-          auth: true
-        },
-        component: _import('demo/page3')
-      },
+      // {
+      //   path: 'page2',
+      //   name: 'page2',
+      //   meta: {
+      //     title: '页面 2',
+      //     auth: true
+      //   },
+      //   component: _import('demo/page2')
+      // },
+      // {
+      //   path: 'page3',
+      //   name: 'page3',
+      //   meta: {
+      //     title: '页面 3',
+      //     auth: true
+      //   },
+      //   component: _import('demo/page3')
+      // },
       // 系统 前端日志
       {
         path: 'log',
@@ -95,6 +96,10 @@ const frameOut = [
 const blog = [
   {
     path: '/',
+    redirect: { name: 'index' }
+  },
+  {
+    path: '/index',
     name: 'index',
     component: _import('blog/index')
   }

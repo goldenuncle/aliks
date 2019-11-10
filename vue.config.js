@@ -17,20 +17,9 @@ module.exports = {
   // 根据你的实际情况更改这里
   publicPath,
   lintOnSave: true,
-   devServer: {
-     publicPath, // 和 publicPath 保持一致
-        proxy: {
-          '/api': {
-            target: 'http://127.0.0.1',
-            ws: true,
-            changeOrigin: true,
-            pathRewrite: {
-              '^/api': '/api'
-            }
-          }
-        },
-        port: 8789,
-   },
+  devServer: {
+    publicPath, // 和 publicPath 保持一致
+  },
   css: {
     loaderOptions: {
       // 设置 scss 公用变量文件

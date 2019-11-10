@@ -1,13 +1,20 @@
 // 菜单 侧边栏
 export default [
-  { path: '/index', title: '首页', icon: 'home' },
+  { path: '/admin/index', title: '首页', icon: 'home' },
+  {
+    title: '文章管理',
+    icon: 'android',
+    children: [
+      { path: '/admin/article', title: '文章管理', icon: 'tripadvisor' },
+      { path: '/admin/article', title: '类型管理' }
+    ]
+  },
   {
     title: '系统设置',
-    icon: 'folder-o',
+    icon: 'apple',
     children: [
-      { path: '/admin/page1', title: '页面 1' },
-      { path: '/admin/page2', title: '页面 2' },
-      { path: '/admin/page3', title: '页面 3' }
+      { path: '/admin/article', title: '用户管理' },
+      { path: '/admin/article', title: '系统日志' }
     ]
   }
 ]
