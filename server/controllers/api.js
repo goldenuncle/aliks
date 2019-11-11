@@ -77,6 +77,20 @@ module.exports = {
         console.log(error.sqlMessage)
       })
     next()
+  },
+  'GET /api/article': async (ctx, next) => {
+    // 首先判断用户名密码是否正确
+    await conn('SELECT * FROM `zsj_blog`')
+      .then(data => {
+        ctx.rest({
+          status: 0,
+          message: '获取成功',
+          data: data
+        })
+      }).catch(error => {
+        console.log(error.sqlMessage)
+      })
+    next()
   }
 
 }

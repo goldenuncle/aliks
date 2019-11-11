@@ -7,6 +7,7 @@ export default [
     children: [
       { path: '/admin/article', title: '文章管理', icon: 'tripadvisor' },
       { path: '/admin/article', title: '类型管理' }
+      // { path: '/admin/article', title: '新增文章', icon: 'apple' }
     ]
   },
   {

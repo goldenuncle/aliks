@@ -25,12 +25,21 @@ const frameIn = [
       // 演示页面
       {
         path: 'article',
-        name: 'article',
+        name: 'admin-article',
         meta: {
           title: '文章管理',
           auth: true
         },
-        component: _import('admin/article')
+        component: _import('admin/article/table')
+      },
+      {
+        path: 'article/add',
+        name: 'admin-article-add',
+        meta: {
+          title: '添加文章',
+          auth: true
+        },
+        component: _import('system/log')
       },
       // {
       //   path: 'page2',
