@@ -80,7 +80,7 @@ module.exports = {
   },
   'GET /api/article': async (ctx, next) => {
     // 首先判断用户名密码是否正确
-    await conn('SELECT * FROM `zsj_blog`')
+    await conn('SELECT a.*,b.NickName as NickName  FROM `article` a,user b where a.user_id=b.id')
       .then(data => {
         ctx.rest({
           status: 0,

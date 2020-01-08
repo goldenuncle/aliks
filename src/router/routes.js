@@ -9,18 +9,18 @@ const _import = require('@/libs/util.import.' + process.env.NODE_ENV)
 const frameIn = [
   {
     path: '/admin',
-    redirect: { name: 'admin/index' },
+    redirect: { name: 'admin-dashboard' },
     component: layoutHeaderAside,
     children: [
       // 首页
       {
-        path: 'index',
-        name: 'admin/index',
+        path: 'dashboard',
+        name: 'admin-dashboard',
         meta: {
-          title: '首页',
+          title: '仪表盘',
           auth: true
         },
-        component: _import('system/index')
+        component: _import('admin/dashboard')
       },
       // 演示页面
       {
@@ -37,9 +37,10 @@ const frameIn = [
         name: 'admin-article-add',
         meta: {
           title: '添加文章',
+          cache: true,
           auth: true
         },
-        component: _import('system/log')
+        component: _import('admin/article/add')
       },
       // {
       //   path: 'page2',
@@ -110,6 +111,10 @@ const blog = [
   {
     path: '/index',
     name: 'index',
+    meta: {
+      title: '博客首页',
+      auth: true
+    },
     component: _import('blog/index')
   }
 ]

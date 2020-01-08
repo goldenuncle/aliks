@@ -1,13 +1,13 @@
-// 数据库连接配置
+﻿// 数据库连接配置
 var mysql = require('mysql')
 var pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
-  password: 'root',
+  password: '123456',
   database: 'alsoi',
   port: '3306',
   charset: 'UTF8_GENERAL_CI',
-  typeCast: false
+  //typeCast: false
 })
 
 let query = function (sql, values) {
@@ -21,8 +21,9 @@ let query = function (sql, values) {
 
           if (err) {
             reject(err)
-          } else {
+          } else {             
             resolve(rows)
+            //console.log(JSON.parse(JSON.stringify(rows)))
           }
           connection.release()
         })

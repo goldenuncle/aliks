@@ -1,6 +1,6 @@
 // 菜单 侧边栏
 export default [
-  { path: '/admin/index', title: '首页', icon: 'home' },
+  { path: '/admin/dashboard', title: 'Dashboard', icon: 'home' },
   {
     title: '文章管理',
     icon: 'android',

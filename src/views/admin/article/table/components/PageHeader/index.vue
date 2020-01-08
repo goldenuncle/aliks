@@ -51,30 +51,34 @@ export default {
           { required: true, message: "请输入查询内容", trigger: "change" }
         ]
       }
-    }
+    };
   },
   methods: {
     handleFormSubmit() {
       this.$refs.form.validate(valid => {
         if (valid) {
-          this.$emit('submit', this.form)
+          this.$emit("submit", this.form);
         } else {
           this.$notify.error({
-            title: '错误',
-            message: '表单校验失败'
-          })
-          return false
+            title: "错误",
+            message: "表单校验失败"
+          });
+          return false;
         }
-      })
+      });
     },
-    toaddarticle () {
-      // this.$router.replace(this.$route.query.redirect || "/admin/article/add");
-      this.$store.dispatch('d2admin/page/open', {
-        name: 'admin-article-add',
-        params: {},
-        query: {}
-      })
+    toaddarticle() {
+      this.$router.replace(this.$route.query.redirect || "/admin/article/add");
+      // this.$store.dispatch("d2admin/page/add", {
+      //   tag: {
+      //     name: "admin-article-add",
+      //     path: "admin/article/add",
+      //     meta: {}
+      //   },
+      //   params: {},
+      //   query: {}
+      // });
     }
   }
-}
+};
 </script>

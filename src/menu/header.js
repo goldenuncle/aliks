@@ -1,6 +1,6 @@
 // 菜单 顶栏
 export default [
-  { path: '/admin/index', title: '首页', icon: 'home' }
+  { path: '/admin/dashboard', title: 'Dashboard', icon: 'home' }
   // {
   //   title: '系统设置',
   //   icon: 'folder-o',

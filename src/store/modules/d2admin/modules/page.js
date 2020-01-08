@@ -56,10 +56,10 @@ export default {
         // 处理数据
         state.opened = value.map(opened => {
           // 忽略首页
-          if (opened.fullPath === '/index') {
-            valid.push(1)
-            return opened
-          }
+          // if (opened.fullPath === '/index') {
+          //   valid.push(1)
+          //   return opened
+          // }
           // 尝试在所有的支持多标签页的页面里找到 name 匹配的页面
           const find = state.pool.find(item => item.name === opened.name)
           // 记录有效或无效信息
