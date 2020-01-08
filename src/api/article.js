@@ -6,3 +6,16 @@ export function ArticleList () {
     method: 'get'
   })
 }
+export function ArticleAdd(data) {
+  return request({
+    url: '/article/add',
+    method: 'post',
+    data
+  })
+}
+export function GetClassify() {
+  return request({
+    url: '/article/classify',
+    method: 'get'
+  })
+}

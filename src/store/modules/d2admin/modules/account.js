@@ -33,6 +33,7 @@ export default {
             util.cookies.set('token', res.result.token)
             // 设置 vuex 用户信息
             await dispatch('d2admin/user/set', {
+              id: res.result.id,
               name: res.result.nickName
             }, { root: true })
             // 用户登录后从持久化数据加载一系列的设置

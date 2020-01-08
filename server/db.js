@@ -3,7 +3,7 @@ var mysql = require('mysql')
 var pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
-  password: '123456',
+  password: 'root',
   database: 'alsoi',
   port: '3306',
   charset: 'UTF8_GENERAL_CI',

@@ -39,6 +39,7 @@ module.exports = {
               status: 0,
               message: '登录成功',
               result: {
+                id: data[0].ID,
                 nickName: data[0].NickName,
                 openId: data[0].OpenID,
                 token: token
@@ -91,6 +92,34 @@ module.exports = {
         console.log(error.sqlMessage)
       })
     next()
-  }
-
+  },
+  'POST /api/article/add': async (ctx, next) => {
+    let postData = ctx.request.body.data
+    await conn('insert into article(user_id,article_title,article_content,create_date) values(?,?,?,now())', [postData.user_id, postData.article_title, postData.article_content])
+      .then(result => {
+        if (result.length !== 0)// 用户名被使用
+          ctx.rest({
+            status: true,
+            message: '发布成功' 
+          })
+      })
+      .catch(error => {
+        console.log(error.sqlMessage)
+      })
+    next()
+  },
+  'GET /api/article/classify': async (ctx, next) => {
+    // 首先判断用户名密码是否正确
+    await conn('SELECT * FROM `labels`')
+      .then(data => {
+        ctx.rest({
+          status: 0,
+          message: '获取成功',
+          data: data
+        })
+      }).catch(error => {
+        console.log(error.sqlMessage)
+      })
+    next()
+  },
 }
