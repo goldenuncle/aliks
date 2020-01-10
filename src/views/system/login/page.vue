@@ -90,7 +90,7 @@ export default {
       // 表单
       formLogin: {
         username: "liux",
-        password: "123456",
+        password: "liuxx970709",
         code: "v9am"
       },
       // 表单校验

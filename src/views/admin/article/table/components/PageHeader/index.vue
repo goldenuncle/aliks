@@ -2,7 +2,7 @@
   <el-form
     :inline="true"
     :model="form"
-    :rules="rules"
+    
     ref="form"
     size="mini"
     style="margin-bottom: -18px;"

@@ -7,3 +7,10 @@ export function AccountLogin (data) {
     data
   })
 }
+export function AccountRegister(data) {
+  return request({
+    url: '/register',
+    method: 'post',
+    data
+  })
+}

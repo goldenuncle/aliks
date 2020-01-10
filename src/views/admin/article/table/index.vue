@@ -1,82 +1,79 @@
 <template>
   <d2-container>
-    <demo-page-header
-      slot="header"
-      @submit="handleSubmit"
-      ref="header"/>
-    <demo-page-main
-      :table-data="table"
-      :loading="loading"/>
+    <demo-page-header slot="header" @submit="handleSubmit" />
+    <demo-page-main :table-data="table" :loading="loading" />
     <demo-page-footer
       slot="footer"
       :current="page.pageCurrent"
       :size="page.pageSize"
       :total="page.pageTotal"
-      @change="handlePaginationChange"/>
+      @change="handlePaginationChange"
+    />
   </d2-container>
 </template>
 
 <script>
+import { ArticleList, ArticleByTitle } from "@/api/article";
 export default {
   // name 值和本页的 $route.name 一致才可以缓存页面
-  name: 'admin-article',
+  name: "admin-article",
   components: {
-    'DemoPageHeader': () => import('./components/PageHeader'),
-    'DemoPageMain': () => import('./components/PageMain'),
-    'DemoPageFooter': () => import('./components/PageFooter')
+    DemoPageHeader: () => import("./components/PageHeader"),
+    DemoPageMain: () => import("./components/PageMain"),
+    DemoPageFooter: () => import("./components/PageFooter")
   },
-  data () {
+  data() {
     return {
       table: [],
       loading: false,
       page: {
         pageCurrent: 1,
         pageSize: 10,
-        pageTotal: 0
+        pageTotal: 0,
+        title:''
       }
-    }
+    };
   },
   methods: {
-    handlePaginationChange (val) {
-      this.$notify({
-        title: '分页变化',
-        message: `当前第${val.current}页 共${val.total}条 每页${val.size}条`
-      })
-      this.page = {
-        pageCurrent: val.current,
-        pageSize: val.size,
-        pageTotal: val.total
-      }
-      // nextTick 只是为了优化示例中 notify 的显示
-      this.$nextTick(() => {
-        this.$refs.header.handleFormSubmit()
-      })
+    handlePaginationChange(val) {
+      this.page.pageCurrent= val.current
+      this.page.pageSize= val.size
+      this.page.pageTotal= val.total
+      this.getArticleList();
     },
-    handleSubmit (form) {
-      this.loading = true
-    //   this.$notify({
-    //     title: '开始请求模拟表格数据'
-    //   })
-    //   BusinessTable1List({
-    //     ...form,
-    //     ...this.page
-    //   })
-    //     .then(res => {
-    //       this.loading = false
-    //       this.$notify({
-    //         title: '模拟表格数据请求完毕'
-    //       })
-    //       this.table = res.list
-    //       this.page.pageTotal = res.page.total
-    //     })
-    //     .catch(err => {
-    //       this.loading = false
-    //       this.$notify({
-    //         title: '模拟表格数据请求异常'
-    //       })
-    //       console.log('err', err)
-    //     })
+    handleSubmit(form) {
+      this.page = {
+        pageCurrent: 1,
+        pageSize: 10,
+        pageTotal: 0,
+        title:form.title
+      };
+      this.loading = true;
+      this.getArticleList();
+
+    },
+    getArticleList() {
+      ArticleList(this.page)
+        .then(res => {
+          if (res.status == 0){
+              this.loading = false;
+              this.table = res.data.rows
+              this.page.pageTotal = res.data.count
+          }
+          // 返回数据
+          else
+            this.$notify({
+              title: "错误",
+              message: `获取不到数据请联系管理员`
+            });
+        })
+        .catch(err => {
+          // 异常情况
+        });
     }
+  },
+  mounted() {
+    this.getArticleList();
   }
-}
+};
 </script>

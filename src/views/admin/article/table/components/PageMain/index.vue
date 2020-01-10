@@ -1,5 +1,5 @@
 <template>
-  <el-table :data="articleTableData" v-loading="loading" size="mini" style="width: 100%;">
+  <el-table :data="tableData" v-loading="loading" size="mini" style="width: 100%;">
     <el-table-column type="expand">
       <template slot-scope="props">
         <el-form label-position="left" inline class="demo-table-expand">
@@ -46,21 +46,6 @@ export default {
     return {
       articleTableData: []
     };
-  },
-  methods: {
-    getArticleList() {
-      ArticleList({})
-        .then(res => {
-          // 返回数据
-          this.articleTableData = res.data;
-        })
-        .catch(err => {
-          // 异常情况
-        });
-    }
-  },
-  mounted() {
-    this.getArticleList();
   }
 };
 </script>
