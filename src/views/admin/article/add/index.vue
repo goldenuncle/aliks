@@ -12,14 +12,21 @@
           <el-input v-model="form.article_title"></el-input>
         </el-form-item>
         <el-form-item label="文章分类" :label-width="formLabelWidth" prop="article_classify">
-          <el-select v-model="form.article_classify">
+          <!-- <el-select v-model="form.article_classify">
             <el-option
               v-for="item in article_classify"
               :key="item.ID"
               :label="item.label_name"
               :value="item.ID"
             ></el-option>
-          </el-select>
+          </el-select>-->
+          <tree-select
+            :data="data"
+            :defaultProps="defaultProps"
+            :nodeKey="nodeKey"
+            :checkedKeys="defaultCheckedKeys"
+            @popoverHide="popoverHide"
+          ></tree-select>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -32,9 +39,13 @@
 
 <script>
 import { ArticleAdd, GetClassify } from "@/api/article";
+import { construct, destruct } from "@aximario/json-tree";
 import { mapState } from "vuex";
 export default {
   name: "admin-article-add",
+  components: {
+    TreeSelect: () => import("./components/tree")
+  },
   data() {
     return {
       dialogFormVisible: false,
@@ -44,9 +55,7 @@ export default {
         article_classify: ""
       },
       formLabelWidth: "120px",
-      article_classify: [
-       
-      ],
+      article_classify: [],
       rules: {
         article_title: [
           { required: true, message: "请输入标题", trigger: "blur" },
@@ -55,7 +64,15 @@ export default {
         article_classify: [
           { required: true, message: "请选择文章分类", trigger: "change" }
         ]
-      }
+      },
+
+      data: [],//SelectTree数据
+      defaultProps: {
+        children: "children",
+        label: "label"
+      },
+      nodeKey: "id",
+      defaultCheckedKeys: []
     };
   },
   methods: {
@@ -69,19 +86,21 @@ export default {
     },
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
+        console.log(this.info)
         if (valid) {
           let data = {
             user_id: this.info.id,
             article_title: this.form.article_title,
             article_content: this.article_content,
+            article_sort_id:this.form.article_classify,
             create_date: new Date()
-          }
-          ArticleAdd({data})
+          };
+          ArticleAdd(data)
             .then(res => {
               // 返回数据
-              if(res.status==true){
-                 this.dialogFormVisible = false
-                 this.$message.success("发表成功啦！")
+              if (res.status == 0) {
+                this.dialogFormVisible = false;
+                this.$message.success("发表成功啦！");
               }
             })
             .catch(err => {
@@ -93,17 +112,36 @@ export default {
           return false;
         }
       });
+    },
+    initChecked() {
+      this.defaultCheckedKeys = [1006, 1007];
+    },
+    popoverHide(checkedIds, checkedData) {
+      this.form.article_classify = checkedIds;
     }
   },
   computed: {
-    ...mapState("d2admin/user", ["info"])  
+     ...mapState("d2admin/user", ["info"])
   },
-  mounted(){
-    GetClassify().then(res =>{
-      this.article_classify = res.data
-    }).catch(err =>{
-      this.$message.error("获取文章分类列表失败,请联系管理员！");
-    })
+  mounted() {
+    GetClassify()
+      .then(res => {
+        if (res.status == 0) {
+          this.data=construct(res.data, {
+            id: "id",
+            pid: "pid",
+            children: "children"
+          })
+        } else {
+          this.defaultCheckedKeys = [1001];
+          this.$message.error("获取文章分类列表失败,请联系管理员！");
+        }
+        //this.article_classify = res.data;
+      })
+      .catch(err => {
+        this.defaultCheckedKeys = [1001];
+        this.$message.error("获取文章分类列表失败,请联系管理员！");
+      });
   }
 };
 </script>

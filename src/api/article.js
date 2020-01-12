@@ -25,7 +25,15 @@ export function ArticleAdd(data) {
 }
 export function GetClassify() {
   return request({
-    url: '/admin/article/classify',
+    url: '/admin/article/sort',
     method: 'get'
+  })
+}
+export function UpdateIsTop(data) {
+  return request({
+    url: '/admin/article/updatetop',
+    method: 'get',
+    params: data
+
   })
 }
