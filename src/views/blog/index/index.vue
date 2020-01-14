@@ -1,12 +1,16 @@
 <template>
-  <div>
-      我是博客首页
+  <div id="blog"> 
+      <navMemu/>
+      <router-view/>
   </div>
 </template>
 
 <script>
+import navMemu from '../components/navmemu'
 export default {
-
+components: {
+    navMemu,
+  },
 }
 </script>
 
