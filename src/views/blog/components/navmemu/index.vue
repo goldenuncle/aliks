@@ -5,7 +5,7 @@
       style="width: 146px; height: 38px"
       :src="/.s"
       :fit="fit"></el-image>
-        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" class="memu">
             <el-menu-item index="1">
             </el-menu-item>
             <el-menu-item index="2">处理中心</el-menu-item>
@@ -38,7 +38,15 @@ export default {
 <style lang="scss" scoped>
 .header{
     .container{
-        margin:0 auto; width:400px; height:100px; border:1px solid #F00
+        margin:0 auto; 
+        width:400px; 
+        height:100px; 
+        border:1px solid #F00;
+        display: flex;
+        flex-direction: row;
+        .logo{
+            flex: auto;
+        }
     }
 }
 </style>
