@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       activeIndex: "1",
-      url: "https://goldenuncle.cn/image/logo.png"
+      url: "https://goldenuncle.cn/image/blogimg/logo.png"
     };
   },
   methods: {

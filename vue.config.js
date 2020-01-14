@@ -28,18 +28,18 @@ module.exports = {
       }
     }
   },
-  // devServer: {
-  //   proxy: {
-  //     '/api': {
-  //       target: 'localhost:3000',
-  //       ws: true,
-  //       changeOrigin: true,
-  //       pathRewrite: {
-  //         '^/api': ''
-  //       }
-  //     }
-  //   }
-  // },
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'https://goldenuncle.cn',
+        ws: true,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
+  },
   // 默认设置: https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-service/lib/config/base.js
   chainWebpack: config => {
     /**
