@@ -10,12 +10,12 @@ export default [
       // { path: '/admin/article', title: '新增文章', icon: 'apple' }
     ]
   },
-  {
-    title: '系统设置',
-    icon: 'apple',
-    children: [
-      { path: '/admin/article', title: '用户管理' },
-      { path: '/admin/article', title: '系统日志' }
-    ]
-  }
+  // {
+  //   title: '系统设置',
+  //   icon: 'apple',
+  //   children: [
+  //     { path: '/admin/article', title: '用户管理' },
+  //     { path: '/admin/article', title: '系统日志' }
+  //   ]
+  // }
 ]

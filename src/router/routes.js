@@ -112,8 +112,8 @@ const blog = [
     path: '/index',
     name: 'index',
     meta: {
-      title: '博客首页',
-      auth: true
+      title: '盼海的小铺',
+      auth: false
     },
     component: _import('blog/index')
   }
