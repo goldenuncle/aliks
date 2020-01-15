@@ -3,7 +3,7 @@
     <navMemu />
     
     <div class="main">
-
+      <articleList />
     </div>
 
   </div>
@@ -12,10 +12,12 @@
 <script>
 import navMemu from "../components/navmenu";
 import userInfo from "../components/userinfo";
+import articleList from "../components/articlelist";
 export default {
    name: 'index',
 components: {
-    navMemu
+    navMemu,
+    articleList
   }
 }
 //userInfo

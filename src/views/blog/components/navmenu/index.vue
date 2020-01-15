@@ -1,15 +1,15 @@
 <template>
   <div class="header">
     <el-row>
-      <el-col :xs="{span: 3, offset: 0}" :sm="0" :md="0" :lg="0" :xl="0">
-        <el-button icon="el-icon-s-unfold" @click="memushow=!memushow"></el-button>
-        
+      <el-col :xs="{span: 3, offset: 0}" :sm="0" :md="0" :lg="0" :xl="0" class="icon">
+          <el-button type="info" icon="el-icon-s-unfold"  @click="memushow=!memushow"></el-button>
       </el-col>
+
       <el-col
-        :xs="{span: 6, offset: 15}"
+        :xs="{span: 10, offset: 5}"
         :sm=" {span: 4, offset: 4}"
         :md="4"
-        :lg="3"
+        :lg="2"
         :xl=" {span: 2, offset: 3}"
       >
         <el-image style="width:100%; height: 100%" :src="url" fit="fit"></el-image>
@@ -28,7 +28,7 @@
           class="el-menu-demo"
           mode="horizontal"
           @select="handleSelect"
-          width="60px"
+
         >
           <el-menu-item index="1" route="/">首页</el-menu-item>
           <el-menu-item index="2" route="/article">文章</el-menu-item>
@@ -73,7 +73,8 @@ export default {
     return {
       activeIndex: "1",
       url: "https://goldenuncle.cn/image/blogimg/logo.png",
-      memushow: false
+      memushow: false,
+      moonandsunny:'moon'
     };
   },
   methods: {
@@ -98,4 +99,16 @@ export default {
   background: #ffffff;
   border-bottom: solid 1px #ccc;
 }
+.icon{
+  position: relative;
+    z-index: 1;
+    float: left;
+    margin: .75em;
+    width: 2em;
+    border-radius: 4px;
+    cursor: pointer;
+
+
+}
+
 </style>
