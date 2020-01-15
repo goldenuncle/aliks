@@ -1,48 +1,33 @@
 <template>
-  <div id="blog"> 
-      <navMemu/>
-      <!-- <el-row :gutter="10">
-        
-        <el-col :offset="3" :xs="8" :sm="9" :md="10" :lg=11 :xl="12"><div class="grid-content bg-purple-light"></div></el-col>
-        <el-col :xs="1" :sm="2" :md="4" :lg="6" :xl="8"><div class="grid-content bg-purple"></div></el-col>
+  <div id="blog">
+    <navMemu />
+    
+    <div class="main">
 
-      </el-row> -->
-      <router-view/>
-      111
+    </div>
+
   </div>
 </template>
 
 <script>
-import navMemu from '../components/navmemu'
+import navMemu from "../components/navmenu";
+import userInfo from "../components/userinfo";
 export default {
+   name: 'index',
 components: {
-    navMemu,
-  },
+    navMemu
+  }
 }
+//userInfo
 </script>
 
-<style  lang="scss" scoped>
-.blog{
-  background-image: url(https://goldenuncle.cn/image/blogimg/bg.png);
+<style lang="scss">
+.main {
+  padding-top:20px;
+  position: relative;
+  background-color: rgb(247, 247, 247);
 }
-.el-row{
-  margin: 0!important;
-  padding: 0!important;
-}
-.el-col {
-    border-radius: 4px;
-  }
-  .bg-purple-dark {
-    background: #99a9bf;
-  }
-  .bg-purple {
+.bg-purple {
     background: #d3dce6;
-  }
-  .bg-purple-light {
-    background: #e5e9f2;
-  }
-  .grid-content {
-    border-radius: 4px;
-    min-height: 36px;
   }
 </style>

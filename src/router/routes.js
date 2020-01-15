@@ -106,7 +106,7 @@ const frameOut = [
 const blog = [
   {
     path: '/',
-    redirect: { name: 'index' }
+    redirect: { name: 'index' },
   },
   {
     path: '/index',
@@ -116,7 +116,16 @@ const blog = [
       auth: false
     },
     component: _import('blog/index')
-  }
+  },
+  {
+    path: '/blog/article',
+    name: 'index',
+    meta: {
+      title: '仪表盘',
+      auth: true
+    },
+    component: _import('blog/index')
+  },
 ]
 
 /**
