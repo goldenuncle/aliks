@@ -1,13 +1,14 @@
 <template>
   <div id="blog"> 
       <navMemu/>
-      <el-row :gutter="10">
+      <!-- <el-row :gutter="10">
         
         <el-col :offset="3" :xs="8" :sm="9" :md="10" :lg=11 :xl="12"><div class="grid-content bg-purple-light"></div></el-col>
         <el-col :xs="1" :sm="2" :md="4" :lg="6" :xl="8"><div class="grid-content bg-purple"></div></el-col>
 
-      </el-row>
+      </el-row> -->
       <router-view/>
+      111
   </div>
 </template>
 
@@ -21,6 +22,9 @@ components: {
 </script>
 
 <style  lang="scss" scoped>
+.blog{
+  background-image: url(https://goldenuncle.cn/image/blogimg/bg.png);
+}
 .el-row{
   margin: 0!important;
   padding: 0!important;

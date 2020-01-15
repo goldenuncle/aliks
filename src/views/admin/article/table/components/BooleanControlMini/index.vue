@@ -60,7 +60,7 @@ export default {
         this.disabled = false;
         if (result.status == 0) {
           this.$message({
-            message: "修改成功",
+            message: "置顶成功",
             type: "success"
           });
           this.currentValue = val;
@@ -72,7 +72,7 @@ export default {
           this.currentValue = this.value;
         } else {
           this.$message({
-            message: "修改失败！",
+            message: "置顶失败！",
             type: "error"
           });
           this.currentValue = this.value;
