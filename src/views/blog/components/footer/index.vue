@@ -27,8 +27,8 @@ export default {
     border-top: 1px solid #eee;
     text-align: center;
     a{
-        color: #000;
-            font-weight: 400;
+        color: #222;
+        font-size: .955em;
     }
     span{
         font-size: .875em;

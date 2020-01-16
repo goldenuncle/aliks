@@ -8,6 +8,9 @@
     <el-backtop target=".blog">
        <d2-icon name="arrow-up"  class="backtop"/>
     </el-backtop>
+   
+  <remote-js  id="ribbon"  alpha='0.3' src="https://goldenuncle.cn/js/canvas_ribbon.js"></remote-js>
+
   </div>
 </template>
 
@@ -22,7 +25,16 @@ export default {
   components: {
     navMemu,
     articleList,
-    mainFooter
+    mainFooter,
+    'remote-js': {
+            render(createElement) {
+              return createElement('script', { attrs: { type: 'text/javascript', src: this.src }});            
+            },
+            props: {
+            src: { type: String, required: true },
+            },
+        }
+
   },
   data () {
     return {
@@ -35,6 +47,11 @@ export default {
 
 <style lang="scss" scoped>
 .blog{
+  margin: 0;
+  padding: 0;
+  background-color: rgba(0,0,0,0.03)!important;
+}
+.blog{
   overflow-x: hidden;
   height: 100vh;
 }
@@ -43,7 +60,7 @@ export default {
   min-height: 1600px;;
   padding-top:20px;
   position: relative;
-  background-color: rgb(247, 247, 247);
+  // background-color: rgb(247, 247, 247);
 }
 .backtop{
   line-height:35px;

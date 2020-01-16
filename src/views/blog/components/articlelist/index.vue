@@ -10,10 +10,19 @@
             </el-col>
             <el-col :xs="{span:24, offset: 0}" :sm="{span:20, offset: 2}" :md="{span:20, offset: 2}" :lg="{span: 17, offset: 3}" :xl="{span: 12, offset: 6}">
                 <div class="article-list">
-                    
-                </div>
-            </el-col>
-            
+                    <el-card class="box-card">
+                        <h2><el-link :underline="false">这是一个文章的标题</el-link></h2>
+                        <div  class="text item">
+                            列表内容  + o 
+                        </div>
+                        <div class="post-meta">
+                            <i class="el-icon-time">2019.07.15</i>
+                            <i class="el-icon-burger">旅行日记</i>
+                        </div>
+                        
+                    </el-card>
+                </div>              
+            </el-col>            
         </el-row>
     </div>
 </template>
@@ -60,13 +69,65 @@ export default {
         font-family: Raleway;
     }
 }
-.el-col {
-  border-radius: 4px;
-  padding-bottom: 1.25em;
-}
+
 .article-list {
     transition: opacity .3s;
-  background: #99a9bf;
+
+    margin-bottom: 2.5em;
+    font: 16px/1.5 'Microsoft Yahei','PingFang SC','Hiragino Sans GB',sans-serif;
+    h2{
+        font-weight: 400;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 1em;
+        border-bottom: 1px solid #ddd;
+        a{
+            color: #222;
+            font-size: .82em; 
+            line-height: 2em;
+            -webkit-transition: all .25s;
+            transition: all .25s;
+            :hover{
+                color: #222;
+                padding-left: .1em;
+            }
+            :visited{
+                 color: #222;
+
+            }
+        }
+        
+    }
+    .text{
+        margin-bottom: 1em;
+        line-height: 1.8em;
+    } 
+    .post-meta{
+        i{
+            margin-right: .8em;
+            line-height: 20px;
+        }
+        .el-icon-time:before {
+            display: inline-block;
+            margin-right: .4em;
+            color: #555;
+            font-size: inherit;
+
+        }
+        .el-icon-burger:before{
+            display: inline-block;
+            margin-right: .4em;
+            color: #555;
+            font-size: inherit;
+        }
+        
+    }
 }
-  
+.el-card {
+    background-color: unset;
+    // border:unset;
+}
+.el-card.is-always-shadow{
+    box-shadow:unset;
+}
 </style>
