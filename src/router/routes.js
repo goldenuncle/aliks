@@ -117,15 +117,15 @@ const blog = [
     },
     component: _import('blog/index')
   },
-  {
-    path: '/blog/article',
-    name: 'index',
-    meta: {
-      title: '仪表盘',
-      auth: true
-    },
-    component: _import('blog/index')
-  },
+  // {
+  //   path: '/blog/article',
+  //   name: 'index',
+  //   meta: {
+  //     title: '仪表盘',
+  //     auth: true
+  //   },
+  //   component: _import('blog/index')
+  // },
 ]
 
 /**
