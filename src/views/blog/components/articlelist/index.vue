@@ -10,14 +10,15 @@
             </el-col>
             <el-col :xs="{span:24, offset: 0}" :sm="{span:20, offset: 2}" :md="{span:20, offset: 2}" :lg="{span: 17, offset: 3}" :xl="{span: 12, offset: 6}">
                 <div class="article-list">
-                    <el-card class="box-card">
-                        <h2><el-link :underline="false">这是一个文章的标题</el-link></h2>
+                    <el-card class="box-card" v-for="data in list" :key="data.id">
+                        <h2><el-link :underline="false">{{data.article_title}}</el-link></h2>
                         <div  class="text item">
-                            列表内容  + o 
+                            <!-- 列表内容  + o  -->
+                            {{data.article_content.substr(0,50)}}
                         </div>
                         <div class="post-meta">
-                            <i class="el-icon-time">2019.07.15</i>
-                            <i class="el-icon-burger">旅行日记</i>
+                            <i class="el-icon-time">{{data.create_date}}</i>
+                            <i class="el-icon-burger">{{ data['sort.sort_name'] }}</i>
                         </div>
                         
                     </el-card>
@@ -28,13 +29,18 @@
 </template>
 
 <script>
+import { ArticleList, ArticleByTitle } from "@/api/article";
 export default {
-
-      
     data() {
         return {
             sourceLong:`**易用** 已经会了 HTML、CSS、JavaScript？即刻阅读指南开始构建应用！**灵活**`,
-
+            page: {
+                    pageCurrent: 1,
+                    pageSize: 10,
+                    pageTotal: 0,
+                    title:''
+            },
+            list:[]
         };
     },
     computed: {
@@ -44,13 +50,29 @@ export default {
 
     },
     mounted() {
-
+            this.getArticleList();
     },
     watch: {
 
     },
     methods: {
-
+        getArticleList() {
+            ArticleList(this.page)
+                .then(res => {
+                if (res.status == 0){
+                    this.list=res.data.rows
+                }
+                // 返回数据
+                else
+                    this.$notify({
+                    title: "错误",
+                    message: `获取不到数据请联系管理员`
+                    });
+                })
+                .catch(err => {
+                // 异常情况
+                });
+            }
     },
 };
 </script>

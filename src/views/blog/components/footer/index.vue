@@ -2,8 +2,8 @@
 
      <el-row class="footer">   
      <el-col :xs="{span:24, offset: 0}" :sm="{span:20, offset: 2}" :md="{span:20, offset: 2}" :lg="{span: 17, offset: 3}" :xl="{span: 12, offset: 6}">
-
-        <span> © 2017 <a href="#">PanHai's blog . </a>All Rights Reserved . 豫ICP备19018434号- 1</span> 
+      
+        <span> © 2017 <a href="#">PanHai's blog . </a>All Rights Reserved . <a href="http://www.beian.miit.gov.cn/"  target="_blank">豫ICP备19018434号- 1 </a></span> 
 
     </el-col>
   </el-row>
