@@ -72,7 +72,7 @@ export default {
   data() {
     return {
       activeIndex: "1",
-      url: "https://goldenuncle.cn/image/blogimg/logo.png",
+      url: "https://aliks.cn/image/blogimg/logo.png",
       memushow: false,
       moonandsunny:'moon'
     };

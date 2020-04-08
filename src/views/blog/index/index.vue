@@ -9,7 +9,7 @@
        <d2-icon name="arrow-up"  class="backtop"/>
     </el-backtop>
    
-  <remote-js  id="ribbon"  alpha='0.3' src="https://goldenuncle.cn/js/canvas_ribbon.js"></remote-js>
+  <remote-js  id="ribbon"  alpha='0.3' src="https://aliks.cn/js/canvas_ribbon.js"></remote-js>
 
   </div>
 </template>
